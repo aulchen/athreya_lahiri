@@ -1,0 +1,86 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{optidef}
+
+\newenvironment{proof}{\paragraph{Proof:}}{\hfill$\square$}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\usepackage{graphicx}
+\graphicspath{ {images} }
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+
+\newcommand{\F}{\mathcal{F}}
+
+	
+\newcommand{\indep}{\perp \!\!\! \perp}
+
+\newcommand{\prob}{\boldsymbol{P}}
+\newcommand{\E}{\text{E}}
+\newcommand{\var}{\text{Var}}
+\newcommand{\cov}{\text{Cov}}
+\newcommand{\tr}{\text{tr}}
+\newcommand{\sd}{\text{SD}}
+\newcommand{\se}{\text{SE}}
+\newcommand{\dom}{\text{dom}}
+\newcommand{\quartile}{\text{quartile}}
+
+\newcommand{\trace}{\text{trace}}
+
+\newcommand{\bin}{\text{Bin}}
+\newcommand{\pois}{\text{Pois}}
+\newcommand{\geom}{\text{Geom}}
+
+\author{Arthur Chen}
+\title{Athreya Lahiri Chapter 1 Solutions}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section*{Problem 1.19}
+
+Let $\Omega$ be a nonempty set and let $C \subset \mathcal{P} (\Omega)$ be a semialgebra. Let
+
+\[
+\mathcal{A}(C) = \{
+A: A=\bigcup_{i=1}^k B_i:B_i \in C, i=1,2 \dots k, k\in \N
+\}
+\]
+
+\subsection*{Part a}
+
+Show that $\mathcal{A}(C)$ is the smallest algebra containing $C$.
+
+\begin{lemma}
+$\mathcal{A}(C)$ is an algebra.
+\begin{proof}
+For $\Omega \in \mathcal{A}(C)$, let $A\in C$ be arbitrary. Because $C$ is a semialgebra, $A^C = \bigcap_{i=1}^k B_i, B_i \in C$, so $A^C \in C$. Thus $A \cap A^C = \Omega \in \mathcal{A}(C)$.
+
+For closure under compliments, $A \in \mathcal{A}(C)$ implies by definition that $A = \bigcup_{i=1}^k B_i, B_i \in C$, and taking compliments $A^C = \bigcap_{i=1}^k B_i^C$. Because $B_i \in C$ and $C$ is a semialgebra, each $B_i^C$ is the finite union of $C_j \in C$. Thus
+\[
+A^C = \bigcap_{i=1}^k\bigcup_{j=1}^{l_i}C_j
+\]
+Distributing the intersection, we get the union of a large number of pairwise intersections, e.g. $A^C = (C_{11}\cap C_{12})\cup(C_{11}\cap C_{13})\cup \dots$. All of the pairwise intersections are in $C$, and thus their union is in $\mathcal{A}(C)$. Thus $A^C \in \mathcal{A}(C)$.
+
+Closure under finite union is immediate. 
+\end{proof}
+\end{lemma}
+
+Showing that $\mathcal{A}(C)$ is the smallest algebra containing $C$ is equivalent to showing that if $B$ is an algebra such that $C \subset B$, then $\mathcal{A}(C) \subset B$. But this is almost immediate. Let $M \in \mathcal{A}(C)$. By definition of $\mathcal{A}(C)$, $M = \bigcap_{i=1}^k M_k, M_k \in C, k \in \N$. Since $B$ is an algebra contain $C$, $M \in B$. Thus $\mathcal{A}(C) \subset B$, as desired.
+
+\subsection*{Part b}
+
+Show that $\sigma\langle C\rangle = \sigma(\langle \mathcal{A}(C) \rangle$.
+
+Trivially, $C \subset \mathcal{A}(C)$ implies $\sigma\langle C\rangle \subset \sigma\langle \mathcal{A}(C) \rangle$. For the reverse, let $M \in \sigma\langle \mathcal{A}(C) \rangle$. Then $M$ is the countable union of elements in $\mathcal{A}(C)$, and thus it is the countable union of elements in $C$ and thus in $\sigma\langle C\rangle$.
+
+\end{document}
