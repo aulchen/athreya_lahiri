@@ -1,0 +1,121 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{optidef}
+
+\newenvironment{proof}{\paragraph{Proof:}}{\hfill$\square$}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\usepackage{graphicx}
+\graphicspath{ {images} }
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+
+\newcommand{\F}{\mathcal{F}}
+
+	
+\newcommand{\indep}{\perp \!\!\! \perp}
+
+\newcommand{\prob}{\boldsymbol{P}}
+\newcommand{\E}{\text{E}}
+\newcommand{\var}{\text{Var}}
+\newcommand{\cov}{\text{Cov}}
+\newcommand{\tr}{\text{tr}}
+\newcommand{\sd}{\text{SD}}
+\newcommand{\se}{\text{SE}}
+\newcommand{\dom}{\text{dom}}
+\newcommand{\quartile}{\text{quartile}}
+
+\newcommand{\trace}{\text{trace}}
+
+\newcommand{\bin}{\text{Bin}}
+\newcommand{\pois}{\text{Pois}}
+\newcommand{\geom}{\text{Geom}}
+
+\author{Arthur Chen}
+\title{Athreya Lahiri Chapter 1 Supplement}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section*{Theorem 1.1.2: The $\pi-\lambda$ Theorem}
+
+If $C$ is a $\pi$-system, then $\lambda\langle C \rangle = \sigma\langle C \rangle$.
+
+\begin{proof}
+For the forward, every $\sigma$-algebra is a $\lambda$-system and $C \subset \sigma \langle C \rangle$ so $\lambda\langle C \rangle \subset \sigma\langle C \rangle$. Thus, it suffices to show that if $C$ is a $\pi$-system, then $\lambda\langle C \rangle$ is a $\sigma$-algebra so that $\sigma\langle C \rangle \subset \lambda\langle C \rangle$.
+
+Since $\lambda\langle C \rangle$ is a $\lambda$-system, it is closed under complementation and monotone increasing unions. By Proposition 1.1.1, showing that it is closed under intersection implies that it is a $\sigma$-algebra.
+
+Let $\lambda_1(C) = \{ A:A \in \lambda\langle C \rangle, A\cap B \in \lambda\langle C \rangle \text{ for all } B \in C \}$.
+
+\begin{lemma}
+$C \subset \lambda_1(C)$.
+\begin{proof}
+Let $A \in C \subset \lambda\langle C \rangle$. Then for all $B \in C$, because $C$ is a $\pi$-system, $(A \cap B) \in C \subset \lambda\langle C \rangle$. Thus $A \in \lambda_1(C)$.
+\end{proof}
+\end{lemma}
+
+\begin{lemma}
+$\lambda_1(C)$ is a $\lambda$-system.
+\begin{proof}
+$\Omega \in \lambda_1(C)$ because $\Omega \in \lambda\langle C \rangle$ by definition and for all $B \in C$, $(\Omega \cap B) = B \in C \subset \lambda\langle C \rangle$. Thus $\Omega \in \lambda_1(C)$.
+
+For closure under set compliment, let $A, X \in \lambda_1(C), X \subset A$. Then $A, X \in \lambda\langle C \rangle$, and for all $B \in C$, $A \cap B, X \cap B \in \lambda\langle C \rangle$. Then $(A\cap B)\backslash(X \cap B) = (A\backslash X)\cap B \in \lambda_1(C)$, because $\lambda\langle C \rangle$ is a $\lambda$-system so $A\backslash X \in \lambda\langle C \rangle$.
+
+For closure under countable monotone increasing union, let $A_1, A_2 \dots \in \lambda_1(C), A_1 \subset A_2 \subset \dots$. Then $A_n \in \lambda\langle C \rangle$ and $A_n \cap B \in \lambda\langle C \rangle$ for all $B \in C$. Let $A = \bigcup_{n=1} A_n$. Then $A \cap B = \bigcup_{n=1}(A_n \cap B)$, and by assumption $(A_n \cap B) \in \lambda\langle C \rangle$ for all $n$, so $\bigcup_{n=1}(A_n \cap B) \in \lambda\langle C \rangle$ for all $B \in C$. Thus $A \in \lambda_1(C)$.
+\end{proof}
+\end{lemma}
+
+\begin{lemma}
+$\lambda_1(C) = \lambda\langle C \rangle$.
+\begin{proof}
+$\lambda_1(C)$ is a $\lambda$-system containing $C$, so $\lambda\langle C \rangle \subset \lambda_1(C)$. However, by the definition of $\lambda_1(C)$, $\lambda_1(C) \subset \lambda\langle C \rangle$.
+\end{proof}
+\end{lemma}
+Let $\lambda_2(C) = \{ A:A\in \lambda\langle C \rangle, A\cap B \in \lambda\langle C \rangle \text{ for all } B \in \lambda\langle C \rangle \}$. $\lambda_2(C)$ is a $\lambda$-system for the same reasons that $\lambda_1(C)$ is - the proofs are essentially unchanged.
+\begin{lemma}
+$C \subset \lambda_2(C)$.
+\begin{proof}
+Let $X \in C$ be arbitrary. Then $X\in \lambda\langle C \rangle = \lambda_1(C)$. Thus by the definition of $\lambda_1(C)$, for all $B \in C$, $(X \cap B) \in \lambda(C)$. Flipping this around and letting $B \in C$ be arbitrary, we see that for all $X \in \lambda\langle C \rangle$, $(B \cap X) \in \lambda(C)$. Thus $C \subset \lambda_2(C)$.
+\end{proof}
+\end{lemma}
+
+By the definition of $\lambda_2(C)$ and the above lemma we see that $C \subset \lambda_2(C) \subset \lambda\langle C \rangle$, and taking the $\lambda$-systems shows that $\lambda_2(C) = \lambda\langle C \rangle$. Thus from the definition of $\lambda_2(C)$, we see that $\lambda\langle C \rangle$ is closed under finite intersection. Thus $\lambda\langle C \rangle$ is a $\sigma$-algebra.
+\end{proof}
+
+\section*{Theorem 1.2.4: Uniqueness of Measures}
+
+Let $\mu_1$ and $\mu_2$ be two finite measures on a measurable space $(\Omega, F)$. Let $\mathcal{C} \subset F$ be a $\pi$-system such that $F = \sigma\langle \mathcal{C} \rangle$. If $\mu_1(C)=\mu_2(C)$ for all $C \in \mathcal{C}$ and $\mu_1(\Omega) = \mu_2(\Omega)$, then $\mu_1(A)=\mu_2(A)$ for all $A \in F$.
+
+\begin{proof}
+Let $L = \{ A:A\in F, \mu_1(A)=\mu_2(A) \}$.
+\begin{lemma}
+$L$ is a $\lambda$-system.
+\begin{proof}
+$\Omega \in L$ follows from the assumption that $\mu_1(\Omega)=\mu_2(\Omega)$.
+For closure under set compliment, let $A, B \in L, A \subset B$. Then $B\backslash A$ has measure $\mu_1(B)-\mu_1(A) = \mu_2(B)-\mu_2(A)$ and thus is in $L$.
+For closure under countable monotone increasing union, let $A_1, A_2 \dots$ have $A_n \subset A_{n+1}$ and $\mu_1(A_n)=\mu_2(A_n)$ for all $n \in \N$. By mcfb of measures,
+\[
+\mu_1\left(
+\bigcup_{i \geq 1} A_i
+\right) = \lim_{n \rightarrow \infty} \mu_1(A_i) = \lim_{n \rightarrow \infty} \mu_2(A_i) =
+\mu_2\left(
+\bigcup_{i \geq 1} A_i
+\right)\
+\]
+and so $\left(\bigcup_{i \geq 1} A_i\right) \in L$.
+\end{proof}
+\end{lemma}
+Since $C \subset L$, by the $\pi$-$\lambda$ theorem, $F = \sigma\langle C \rangle \subset L$, and so by the definition of $L$, the measures are equal on $F$.
+\end{proof}
+
+\end{document}

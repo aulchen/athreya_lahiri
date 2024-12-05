@@ -69,7 +69,7 @@ For closure under compliments, $A \in \mathcal{A}(C)$ implies by definition that
 \[
 A^C = \bigcap_{i=1}^k\bigcup_{j=1}^{l_i}C_j
 \]
-Distributing the intersection, we get the union of a large number of pairwise intersections, e.g. $A^C = (C_{11}\cap C_{12})\cup(C_{11}\cap C_{13})\cup \dots$. All of the pairwise intersections are in $C$, and thus their union is in $\mathcal{A}(C)$. Thus $A^C \in \mathcal{A}(C)$.
+Distributing the intersection, we get the union of a finite number of pairwise intersections, e.g. $A^C = (C_{11}\cap C_{12})\cup(C_{11}\cap C_{13})\cup \dots$. All of the pairwise intersections are in $C$, and thus their union is in $\mathcal{A}(C)$. Thus $A^C \in \mathcal{A}(C)$.
 
 Closure under finite union is immediate. 
 \end{proof}
@@ -79,8 +79,52 @@ Showing that $\mathcal{A}(C)$ is the smallest algebra containing $C$ is equivale
 
 \subsection*{Part b}
 
-Show that $\sigma\langle C\rangle = \sigma(\langle \mathcal{A}(C) \rangle$.
+Show that $\sigma\langle C\rangle = \sigma\langle \mathcal{A}(C) \rangle$.
 
 Trivially, $C \subset \mathcal{A}(C)$ implies $\sigma\langle C\rangle \subset \sigma\langle \mathcal{A}(C) \rangle$. For the reverse, let $M \in \sigma\langle \mathcal{A}(C) \rangle$. Then $M$ is the countable union of elements in $\mathcal{A}(C)$, and thus it is the countable union of elements in $C$ and thus in $\sigma\langle C\rangle$.
+
+\section*{Problem 1.20}
+
+Let $C$ be a semialgebra $\Omega$ with $\mu$ a measure on $C$. Let $\mu^*$ be the outer measure induced by $\mu^*$, defined as
+
+\[
+\mu^*(A) \coloneq \inf\Biggl\{
+\sum_{n=1}^\infty \mu(A_n):\{A_n\}_{n\geq 1} \subset C, A \bigcup_{n\geq 1} A_n
+\Biggr\}
+\]
+
+Show that $\mu^*$ satisfies the following three properties making it an outer measure:
+\begin{itemize}
+\item Non-negativity: $\mu^*(\emptyset) = 0$
+\item Monotonicity: $A \subset B \Rightarrow \mu^*(A) \leq \mu^*(B)$
+\item Countable sub-additivity: For any $\{A_n\}_{n \geq 1} \subset P(\Omega), \mu^*\left( \bigcup_{n\geq 1} A_n \right) \leq \sum_{n=1}^\infty \mu^*(A_n)$
+\end{itemize}
+
+\begin{lemma}
+For a (non-empty) semi-algebra $C$, $\emptyset \in C$.
+\begin{proof}
+Let $A \in C$. Then $A^C = \bigcup_{i=1}^k B_i$, $k$ finite, $B_i \in C$. Then $A \cap B_i = \emptyset$, and since $C$ is closed to complements, $\emptyset \in C$.
+\end{proof}
+\end{lemma}
+
+For non-negativity, $\emptyset \in C$ and $\mu(\emptyset) = 0$ imply $\mu^*(\emptyset) = 0$. For monotonicity, consider any cover of $B$ with sets in $C$. Then that cover also covers $A$. Since $\mu^*(A)$ is the infimum of the sum of the measures of sets in $C$ that cover $A$, monotonicity follows immediately.
+
+For countable sub-additivity, if the sum on the right is infinite, then the result is immediate. Otherwise, $\mu^*(A_n) < \infty$ for all $n$ and the outer measures of $A_n$ decrease enough so that the sum is (absolutely) convergent.
+
+Let $0 < \epsilon < \infty$. Since $\mu^*(A_n)$ is the infimum over covers of $A_n$ with elements in $C$, there exist $\{A_{nj}\}_{j \geq 1} \subset C$ such that
+
+\[
+\mu^*(A_n) \leq \sum_{j=1}^\infty \mu(A_{nj}) \leq \mu^*(A_n) + \frac{\epsilon}{2^n}
+\]
+
+The union of covers over the $A_n$, $\bigcup_{n \geq 1} \bigcup_{j \geq 1} A_{nj,}$ form a cover for $\bigcup_{n \geq 1} A_n$. Thus
+
+\[
+\mu^*\left( \bigcup_{n \geq 1} A_n \right) \leq
+\mu\left( \bigcup_{n=1}\bigcup_{j=1} A_{nj} \right)
+\leq \sum_{n=1}\sum_{j=1} \mu(A_{nj}) \leq \sum_{n=1}\left(\mu^*(A_n) + \frac{\epsilon}{2^n}\right)
+\]
+
+which proves the desired result.
 
 \end{document}
