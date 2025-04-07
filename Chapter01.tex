@@ -127,4 +127,56 @@ The union of covers over the $A_n$, $\bigcup_{n \geq 1} \bigcup_{j \geq 1} A_{nj
 
 which proves the desired result.
 
+\section*{Problem 1.22}
+
+Let $F: \R \rightarrow \R$ be nondecreasing. Let $(a, b], (a_n, b_n], n \in \N$ be intervals in $\R$ such that $(a, b] = \bigcup_{n\geq 1} (a_n, b_n]$ and $\{(a_n, b_n]: n \geq 1 \}$ are disjoint. Let $\mu_F(\cdot)$ be
+
+\begin{gather*}
+\mu_F((a, b]) = F(b+) - F(a+) \\
+\mu_F((a, \infty)) = F(\infty) - F(a+)
+\end{gather*}
+
+Show that $\mu_F((a, b]) = \sum_{n=1}^\infty \mu_F((a_n, b_n])$ and is thus countably additive with the following:
+
+\subsection*{Part b}
+
+Assume wlog that $F(\cdot)$ is right continuous (which follows trivially from the definition). Show that for any $k \in \N$,
+
+\[
+F(b) - F(a) \geq \sum_{i=1}^k(F(b_i) - F(a_i))
+\]
+
+which implies that 
+
+\[
+F(b) - F(a) \geq \sum_{i=1}^\infty(F(b_i) - F(a_i))
+\]
+
+Wlog, assume that the intervals are indexed so that $a_{i+1} > a_i$. Choose $k$ of the intervals, being sure to choose the $a_1 = a$ and $a_k$ corresponding to the interval with right endpoint $b$. Since the intervals are disjoint, $b_{i-1} \leq a_i$ and since $F$ is nondecreasing, this implies that $F(b_{i-1}) \leq F(a_i)$. Thus by telescoping,
+
+\begin{align*}
+F(b) - F(a) &= \sum_{i=2}^k F(b_i) - F(b_{i-1}) + F(b_1) - F(a) \\
+&\geq \sum_{i=1}^k F(b_i) - F(a_i)
+\end{align*}
+for all $k$, which implies the desired result.
+
+\subsection*{Part c}
+
+Fix $\eta > 0$. Choose $c>a$ and $d_n > b_n, n \geq 1$ such that
+\begin{gather*}
+F(c) - F(a) < \eta \\
+F(d_n) - F(b_n) < \frac{\eta}{2^n}
+\end{gather*}
+
+We know that $\{(a_n, d_n)\}_{n \geq 1}$ is an open cover for $[c, b]$, so by the Heine-Borel theorem, there exists a finite subcover $\{(a_i, d_i)\}_{i=1}^k$ for $[c, b]$. Wlog, index the intervals in the finite subcover such that $c \in (a_1, d_1)$ and $b \in (a_k, d_k)$. Thus letting $b_k$ be the $b_i$ that corresponds to $d_k$,
+
+\begin{align*}
+F(b) - F(a) &= F(b_k) - F(a_k) + F(a_k) - \dots +F(a_1) - F(a) \\
+&\leq F(d_k) - F(a_k) + F(d_{k-1}) - F(a_{k-1}) + \dots + F(c) - F(a) \\
+&\leq \sum_{i=1}^k \left(F(b_i) - F(a_i) + \frac{\eta}{2^n}\right) + \eta \\
+&\leq \sum_{i=1}^k F(b_i) - F(a_i) + 2\eta
+\end{align*}
+
+which implies the desired result.
+
 \end{document}
