@@ -9,34 +9,18 @@
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{corollary}[theorem]{Corollary}
 
-\usepackage{graphicx}
-\graphicspath{ {images} }
-
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\Q}{\mathbb{Q}}
 \newcommand{\Z}{\mathbb{Z}}
 \newcommand{\N}{\mathbb{N}}
 
 \newcommand{\F}{\mathcal{F}}
-
+\newcommand{\M}{\mathcal{M}}
+\newcommand{\B}{\mathcal{B}}
 	
 \newcommand{\indep}{\perp \!\!\! \perp}
 
 \newcommand{\prob}{\boldsymbol{P}}
-\newcommand{\E}{\text{E}}
-\newcommand{\var}{\text{Var}}
-\newcommand{\cov}{\text{Cov}}
-\newcommand{\tr}{\text{tr}}
-\newcommand{\sd}{\text{SD}}
-\newcommand{\se}{\text{SE}}
-\newcommand{\dom}{\text{dom}}
-\newcommand{\quartile}{\text{quartile}}
-
-\newcommand{\trace}{\text{trace}}
-
-\newcommand{\bin}{\text{Bin}}
-\newcommand{\pois}{\text{Pois}}
-\newcommand{\geom}{\text{Geom}}
 
 \author{Arthur Chen}
 \title{Athreya Lahiri Chapter 1 Solutions}
@@ -178,5 +162,91 @@ F(b) - F(a) &= F(b_k) - F(a_k) + F(a_k) - \dots +F(a_1) - F(a) \\
 \end{align*}
 
 which implies the desired result.
+
+\section*{Problem 1.26}
+
+Establish the uniqueness of the Caratheodory extension with the following. Let $\mu$ be a $\sigma$-finite measure on a semialgebra $C$. Let $\nu$ be a measure on the measurable space $(\Omega, \sigma\langle C\rangle)$, such that $\nu = \mu$ on $C$. We want to prove that $\nu = \mu^*$ on $\sigma\langle C\rangle$.
+
+\subsection*{Part a}
+
+Suppose that $\nu(\Omega) < \infty$. Verify that $L \coloneq \{ A : A \in \sigma\langle C\rangle, \mu^*(A) = \nu(A) \}$ is a $\lambda$ system and use the $\pi-\lambda$ theorem.
+
+We first state a lemma that $\sigma\langle C\rangle \subset M_{\mu^*}$, since $M_{\mu^*}$ is a $\sigma$-algebra that contains $C$.
+
+We verify the assumptions of a $\lambda$ system. For $\Omega \in L$, since $C$ is a semialgebra, we know that there are finite disjoint sets $A_1 \dots A_k \in C$ such that $\bigcup_{i=1}^k A_i = \Omega$. Thus
+
+\[
+\nu(\Omega) = \nu\left( \bigcup_{i=1}^k A_i \right) = \sum_{i=1}^k \nu(A_i) = \sum_{i=1}^k \mu^*(A_i) = \mu^*\left( \bigcup_{i=1}^k A_i \right) = \mu^*(\Omega)
+\]
+
+where the middle equality follows because $\nu = \mu = \mu^*$ on $C$. Thus $\Omega \in L$.
+
+For closure under complement, let $A, B \in L$. Then since $A, B \in \sigma\langle C\rangle$, both are measurable under $\nu$ and $\mu^*$, so
+
+\[
+\nu(B\backslash A) = \nu(B) - \nu(A) = \mu^*(B) - \mu^*(A) = \mu^*(B \backslash A)
+\]
+
+and so $B\backslash A \in L$. These expressions are well-defined because $\nu(\Omega) < \infty$, so $\nu(A) < \infty$.
+
+For closure under monotone increasing union, let $A_1, \dots \in L$, with $A_n \subset A_{n+1}$ for all $n$. Let $B_1 = A_1, B_n = A_n \\ A_{n-1}$. Since the $A_n \in L$, by the above, $B_n \in L$. It's also clear that $\bigcup_{i=1} A_i = \bigcup_{i=1} B_i$. Thus
+
+\[
+\nu\left( \bigcup_{i=1} B_i \right) = \sum_{i=1} \nu(B_i) = \sum_{i=1} \mu^*(B_i) = \mu^*\left( \bigcup_{i=1} B_i \right)
+\]
+
+Thus $\bigcup_{i=1} A_i \in L$, and $L$ is a $\lambda$-system. Since $C$ is a semialgebra and thus a $\pi$-system, the $\pi-\lambda$ theorem states that $\lambda\langle C\rangle = \sigma\langle C\rangle$, which implies that $\sigma\langle C\rangle \subset L$. But by definition, $L \subset \sigma\langle C\rangle$, and thus $L = \sigma\langle C\rangle$. Thus $\mu^*(A) = \nu(A)$ for all $A \in \sigma\langle C\rangle$, as desired.
+
+\subsection*{Part b}
+
+Extend the result to the $\sigma$-finite case.
+
+The only result that needs to be changed in Part ii. Because $\Omega$ is $\sigma$-finite on $C$, there exist countable sets $\{C_i\} \subset C$, not necessarily disjoint, such that $\mu(C_i) < \infty$ and $\bigcup_{i=1}^\infty C_i = \Omega$. Since $C$ is a semialgebra, we can take intersections of all subsets of $\{C_i\}$ to get a countable disjoint collection of subsets in $C$ with finite measure whose union is $\Omega$. Thus, wlog, we can assume that $\{C_i\}$ are disjoint.
+
+Thus
+\begin{align*}
+\nu(B \backslash A) &= \nu(B \backslash A \cap \Omega) = \nu\left(B \cap A^C \cap \bigcup_{i=1}^\infty C_i \right) 
+= \nu\left( \bigcup_{i=1}^\infty B \cap A^C \cap C_i \right) \\
+&= \sum_{i=1}^\infty \nu\left(B \cap A^C \cap C_i \right)
+= \sum_{i=1}^\infty \mu^*\left(B \cap A^C \cap C_i \right) \\
+&= \mu^*\left(B \cap A^C \cap \bigcup_{i=1}^\infty C_i \right) \\
+&= \mu^*(B \backslash A)
+\end{align*}
+
+where the equalities follow because $B \cap A \cap C_i \in \sigma\langle C \rangle$ and disjoint.
+
+\section*{Problem 1.28}
+
+Let $F$ be a discrete distribution function, i.e. $F$ is of the form
+\[
+F(x) = \sum_{j=1}^\infty a_jI(x_j \leq x), x \in \R
+\]
+where $0 < a_j < \infty$, $\sum_{j \geq 1} a_j = 1$, $x_j \in \R$, $j \geq 1$. Show that $\M_{\mu_F^*} = \mathcal{P}(\R)$.
+
+We know that $F$ is cadlag, so it is right-continuous and has left limits everywhere. Define $A = \{x_j\}_{j \geq 1}$ to be the set of jump points. It's clear by the definition of $F$ that $F$ is discontinuous on $A$ and continuous everywhere else. By the definition of the Riemann-Stieltjes measure,
+
+\[
+\mu_F^*(\{x_j\}) = F(x_j^+) - F(x_j^-) = a_j
+\]
+
+for all $j \geq 1$, and $\mu_F^*(x) = 0$ everywhere else.
+
+\begin{lemma}
+$A \in \M_{\mu_F^*}$.
+\begin{proof}
+All singletons are measurable, because for $x \in \R$, $\{x\} = \Bigl( (-\infty, x) \cup (x, \infty) \Bigr)^C$, so $\{x\} \in \B = \sigma\langle C \rangle \subset \M_{\mu_F^*}$. The countable union of measurable sets is measurable.
+\end{proof}
+\end{lemma}
+
+Thus
+\[
+\mu^*_F(A) = \sum_{j=1}^\infty \mu^*_F(\{x_j\}) = \sum_{j=1}^\infty a_j = 1
+\]
+By definition, $\mu^*(\R) = 1$. Thus
+\[
+\mu^*_F(A^C) = \mu^*_F(\R \backslash A) = \mu^*_F(\R) - \mu^*_F(A) = 0
+\]
+
+For all $B \subset \R$, $B \cap A \in \B(\R)$, so $B \cap A$ is measurable. $\mu^*_F$ is complete, so $\mu^*_F(A^C) = 0$ implies that $B \cap A^C$ is measurable. Thus $B$ is the finite union of measurable sets, and is thus measurable.
 
 \end{document}
