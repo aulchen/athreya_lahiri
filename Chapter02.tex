@@ -1,0 +1,125 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{optidef}
+\usepackage{dsfont}
+
+\newenvironment{proof}{\paragraph{Proof:}}{\hfill$\square$}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+
+\newcommand{\F}{\mathcal{F}}
+\newcommand{\M}{\mathcal{M}}
+\newcommand{\B}{\mathcal{B}}
+	
+\newcommand{\indep}{\perp \!\!\! \perp}
+
+\newcommand{\prob}{\boldsymbol{P}}
+
+\author{Arthur Chen}
+\title{Athreya Lahiri Chapter 2 Solutions}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section*{Problem 2.1}
+
+Prove de Morgan's laws. Let $\Omega_i, i = 1, 2$ be two nonempty sets, and let $T:\Omega_1 \rightarrow \Omega_2$ be a map. For any collection $\{A_\alpha: \alpha \in I\}$ of subsets of $\Omega_2$, prove that
+
+\begin{gather*}
+T^{-1}\left( \bigcup_{\alpha \in I} A_\alpha \right) = \bigcup_{\alpha \in I} T^{-1}(A_\alpha) \\
+T^{-1}\left( \bigcap_{\alpha \in I} A_\alpha \right) = \bigcap_{\alpha \in I} T^{-1}(A_\alpha) \\
+\left( T^{-1}(A) \right)^C = T^{-1}(A^C)
+\end{gather*}
+
+For the first,
+\begin{align*}
+T^{-1}\left( \bigcup_{\alpha \in I} A_\alpha \right) &= \{ B \in \Omega_1: T(B) \in \bigcup_{\alpha \in I} A_\alpha \} \\
+&=\bigcup_{\alpha \in I} \{ B \in \Omega_1: T(B) \in  A_\alpha \} \\
+&= \bigcup_{\alpha \in I} T^{-1}(A_\alpha)
+\end{align*}
+with a similar argument holding for the second. For the third,
+
+\[
+\left( T^{-1}(A) \right)^C = \{B \in \Omega_1: T(b) \in A\}^C = \{B \in \Omega_1: T(b) \in A^C\} = T^{-1}(A^C)
+\]
+
+\section*{Problem 2.6}
+
+Let $X_i, i = 1, 2, 3$ be random variables on a probability space $(\Omega, \F, \prob)$. Consider the equation (with $t \in \R$)
+\[
+X_1(\omega)t^2 + X_w(\omega)t + X_3(\omega) = 0
+\]
+
+\subsection*{Part a}
+Show that $A \coloneq \{ \omega \in \Omega: \text{The above equation has two distinct roots} \} \in \F$.
+
+The condition for $\omega \in A$ is equivalent to
+
+\[
+\{\omega: X_1(\omega) \neq 0 \}\cap \{\omega: X_2^2(\omega) - 4X_1(\omega)X_3(\omega) > 0 \}
+\]
+
+because this indicates that the polynomial is second-order and its discriminant is positive. $X_1(\omega)$ and $X_2^2(\omega) = 4X_1(\omega)X_3(\omega)$ are random variables on probability space $(\Omega, \F, \prob)$ and the sets $(0, \infty)$ and $(-\infty, 0) \cup (0, \infty)$ are Borel sets in $\R$, so both of the above sets are in $F$, and their intersection is thus in $F$.
+
+\subsection*{Part b}
+Let $T_1(\omega)$ and $T_2(\omega)$ denote the two roots of the above equation on $A$. Let
+\[
+f_i(\omega) = \begin{cases}
+T_i(\omega) & \omega \in A \\
+0 & \omega \in A^C
+\end{cases}
+\]
+
+Show that $(f_1, f_2)$ is $\langle \F, \B(\R^2) \rangle$-measurable.
+\begin{lemma}
+Let $f$ be a non-negative $\langle \F, \B(\R) \rangle$-measurable function. Then $\sqrt{f}$ is $\langle \F, \B(\R) \rangle$-measurable.
+\begin{proof}
+For all $a \geq 0$,
+\[
+(\sqrt{f(\omega)})^{-1}((-\infty, a]) = \{ \omega: 0 \leq \sqrt{f(\omega)} \leq a \} 
+= \{\omega : 0 \leq f(\omega) \leq a^2 \}  \in F
+\]
+\end{proof}
+\end{lemma}
+
+By the quadratic formula (arbitrarily letting $i=1$ be the positive root), we have that
+
+\[
+f_1(\omega) = \frac{-X_2(\omega) + \sqrt{X_2^2(\omega) - 4X_1(\omega)X_3(\omega)}}{2X_1(\omega)} \mathds{1}_A
+\]
+
+and $f_2$ is the negative root. By Problem 2.3, since the numerator and denominator are $\langle \F, \B(\R) \rangle$-measurable, $A \ in F$, and the restriction in $A$ prevents the denominator from being zero, $f_i, i = 1, 2$ is $\langle \F, \B(\R) \rangle$-measurable, and the Cartesian product of $\langle \F, \B(\R) \rangle$-measurable functions is $\langle \F, \B(\R) \rangle$-measurable.
+
+\section*{Problem 2.7}
+
+Let $M \coloneq ((X_{ij})), 1 \leq i,j \leq k$ be a random matrix of random variables $X_{ij}$ defined on a probability space $(\Omega, \F, \prob)$.
+
+\subsection*{Part a}
+
+Show that $det(M)$ and $tr(M)$ are both $\langle \F, \B(\R) \rangle$-measurable.
+
+The trace is trivial; the diagonal entries of $M$ are $\langle \F, \B(\R) \rangle$-measurable and so is their sum. The determinant follows by induction on the size of $M$. When $k=1$, the determinant is the random variable $X_{11}$, which by assumption is $\langle \F, \B(\R) \rangle$-measurable. Assuming that the determinant of a size $k-1$ matrix of random variables in $(\Omega, \F, \prob)$ is $\langle \F, \B(\R) \rangle$-measurable, by the Laplace expansion, we can rewrite the determinant of the size $k$ matrix as the sum of random variables multiplied by the determinant of size $k-1$ matrices, and this sum is $\langle \F, \B(\R) \rangle$-measurable.
+
+\subsection*{Part b}
+
+Show that the largest eigenvalue of $M'M$ is $\langle \F, \B(\R) \rangle$-measurable.
+
+Using the hint, I will note that the largest eigenvalue is equal to
+
+\[
+\sup_{x} \frac{x'M'Mx}{x'x}\mathds{1}_{x \neq 0}
+\]
+
+The numerator and denominator are the sums of products of random variables in $(\Omega, \F, \prob)$ and the denominator is restricted from zero, so the internal function is $\langle \F, \B(\R) \rangle$-measurable, and the supremum of a measurable function is measurable.
+
+\end{document}
