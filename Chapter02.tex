@@ -53,6 +53,25 @@ with a similar argument holding for the second. For the third,
 \left( T^{-1}(A) \right)^C = \{B \in \Omega_1: T(b) \in A\}^C = \{B \in \Omega_1: T(b) \in A^C\} = T^{-1}(A^C)
 \]
 
+\section*{Problem 2.3}
+
+Let $f, g: \Omega \rightarrow \R$ be $\langle \F, \B(\R) \rangle$-measurable. Set
+
+\[
+h(\omega) = \frac{f(\omega)}{g(\omega)}\mathds{1}(g(\omega) \neq 0)
+\]
+
+Verify that $h$ is $\langle \F, \B(\R) \rangle$-measurable.
+
+Directly from the definition, we have that for $a \in \R$,
+\begin{align*}
+h^{-1}((-\infty, a]) &= \{\omega: \frac{f(\omega)}{g(\omega)}\mathds{1}(g(\omega) \neq 0) \leq a \} \\
+&= \{\omega: f(\omega) \leq ag(\omega), g(\omega) > 0 \} \cup \{\omega: f(\omega) \geq ag(\omega), g(\omega) < 0 \} \\
+&= \{\omega: f(\omega) - ag(\omega) \leq 0, g(\omega) > 0 \} \cup \{\omega: f(\omega) - ag(\omega) \geq 0, g(\omega) < 0 \}
+\end{align*}
+
+$f(\omega) - ag(\omega)$ and $g(\omega)$ are $\langle \F, \B(\R) \rangle$-measurable functions, so for the left and right sets, the conditions individually define sets in $\F$ so their intersection is in $\F$. Thus $h(\omega)$ is $\langle \F, \B(\R) \rangle$-measurable.
+
 \section*{Problem 2.6}
 
 Let $X_i, i = 1, 2, 3$ be random variables on a probability space $(\Omega, \F, \prob)$. Consider the equation (with $t \in \R$)
