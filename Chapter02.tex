@@ -141,4 +141,120 @@ Using the hint, I will note that the largest eigenvalue is equal to
 
 The numerator and denominator are the sums of products of random variables in $(\Omega, \F, \prob)$ and the denominator is restricted from zero, so the internal function is $\langle \F, \B(\R) \rangle$-measurable, and the supremum of a measurable function is measurable.
 
+\section*{Problem 2.15}
+
+Consider the probability space $\bigl((0, 1), \B((0, 1)), m \bigl)$, where $m$ is the Lebesgue measure.
+
+\subsection*{Part a}
+
+Let $Y_1$ be the random variable $Y_1(x) = \sin(2\pi x)$ for $x \in (0, 1)$. Find the cdf of $Y_1$.
+
+Looking at the graph of $\sin(2\pi x)$, for $y \in (0, 1)$, we have that $\sin^{-1} y > 0$, thus
+
+\begin{align*}
+\prob(Y_1 \leq y) &= mY_1^{-1}\bigl( (-\infty, y] \bigr)\\
+&= m\left( \left(0, \frac{\sin^{-1}y}{2\pi}\right) \bigcup \left(1/2 - \frac{\sin^{-1}y}{2\pi}, 1\right)  \right)\\
+&= \frac{1}{2} + \frac{\sin^{-1}y}{\pi}
+\end{align*}
+
+Similarly, for $y \in (-1, 0)$, we have that $\sin^{-1} y < 0$, thus
+
+\[
+\prob(Y_1 \leq y) = m\left( \frac{1}{2} - \frac{\sin^{-1}y}{2\pi}, 1 + \frac{\sin^{-1}y}{2\pi} \right) = \frac{1}{2} + \frac{\sin^{-1}y}{\pi}
+\]
+
+Thus
+\[
+\prob(Y_1 \leq y) =
+\begin{cases}
+0 & y \leq -1 \\
+\frac{1}{2} + \frac{\sin^{-1}y}{\pi} & y \in (-1, 1) \\
+1 & y \geq 1
+\end{cases}
+\]
+
+\subsection*{Part b}
+
+Let $Y_2$ be the random variable $Y_2(x) = \log x$ for $x \in (0, 1)$. Find the cdf of $Y_2$.
+
+We have that for $y < 0$,
+
+\[
+\prob(Y_2 \leq y) = mY_2^{-1}\bigl( (-\infty, y] \bigl) = m\bigl( (0, e^y) \bigl) = e^y
+\]
+
+Thus
+\[
+\prob(Y_2 \leq y) =
+\begin{cases}
+e^y & y < 0 \\
+1 & y \geq 0
+\end{cases}
+\]
+
+\subsection*{Part c}
+
+Let $F: \R \rightarrow \R$ be a cdf. For $x \in (0, 1)$, let
+\begin{gather*}
+F_1^{-1}(x) = \inf\{ y: y \in \R, F(y) \geq x\} \\
+F_2^{-1}(x) = \sup\{ y: y \in \R, F(y) \leq x\}
+\end{gather*}
+
+Let $Z_i$ be the random variable defined by
+\[
+Z_i = F_i^{-1}(x), x \in (0, 1), i = 1, 2
+\]
+\subsubsection*{Subpart i}
+
+\textbf{IN PROGRESS}
+
+Find the cdf of $Z_i, i = 1, 2$.
+
+We begin with a characterization of $F_1^{-1}$ and $F_2^{-1}$.
+
+\begin{lemma}
+Let $A_x = \{ y: y \in \R, F(y) = x \}$. Then $A$ is either the empty set, a singleton, or an interval.
+\begin{proof}
+$F$ is right-continuous and nondecreasing. If there is no $y$ such that $F(y) = x$, then $F$ has a jump discontinuity that jumps from below $y$ to above $y$, since otherwise by the intermediate value theorem $F$ would achieve the value $x$. If $A_x$ is a nonempty nonsingleton, then there exist multiple $y$ such that $F(y) = x$. This must occur when $F$ is flat, and since $F$ is nondecreasing, this can only happen on a connected interval.
+\end{proof}
+\end{lemma}
+
+\begin{lemma}
+$F_i^{-1}(x)$ can be broken up into cases. When $F(y)$ is flat, letting $y_1$ and $y_2$ be the left and right endpoints of the interval, $F_1^{-1}(x) = y_1$ and $F_2^{-1}(x) = y_2$. When $F(y)$ has a jump discontinuity at $y$ that jumps from $x_1$ to $x_2$, $x:x\in[x_1, x_2] \rightarrow F_i^{-1}(x) = y$. Otherwise, $F$ is invertible at $y$ and $F_i^{-1}(x) = F^{-1}(F(y)) = y$.
+\end{lemma}
+
+
+\begin{lemma}
+For any $x \in (0, 1), t \in \R, F(t) \geq x \Leftrightarrow F_1^{-1}(x) \leq t$.
+\begin{proof}
+For the forward, assume that $F(t) \geq x$. Because $F$ is nondecreasing, the infimum of $y$ such that $F(y) \geq x$ must be less than or equal to $t$. For the reverse, assume that $F_1^{-1}(x) \leq t$. Because $F$ is nondecreasing and right continuous, the sets $F(y) \geq x$ are closed intervals, and thus their infimum lies within the set - specifically, at the left endpoint, which is $F_1^{-1}(x)$. Thus for $t \geq F_1^{-1}(x)$, we know that $F(t) \geq F(F_1^{-1}(x)) = x$, since $F_1^{-1}(x)$ is the left endpoint and this is where the sets achieve their minimum.
+\end{proof}
+\end{lemma}
+
+Thus for $Z_1$,
+
+\[
+\prob(Z_1 \leq z) = mZ_1^{-1}\bigl( (-\infty, z] \bigl) = m\bigl( [0, F(z)] \bigl) = F(z)
+\]
+where we used the lemma substituting $z$ for $t$.
+
+\section*{Problem 2.16}
+
+\subsection*{Part a}
+
+Let $(\Omega, \F_1, \mu)$ be a $\sigma$-finite measure space. Let $T: \Omega \rightarrow \R$ be $\langle \F, \B(\R) \rangle$ measureable. Show by counterexample that the induced measure $\mu T^{-1}$ need not be $\sigma$-finite.
+
+Let $(\Omega, \F_1, \mu)$ be the Lebesgue measure on the Borel sets of $\R$, which is obviously $\sigma$-finite. Let $T(x) = 0$. $T$ is continuous and thus $\langle \F, \B(\R) \rangle$ measurable. However, the induced measure $\mu T^{-1}(A)$ equals infinity if $x \in A$, zero otherwise. Thus there is no collection of sets with finite measure such that their union is $\R$, and thus $\mu T^{-1}$ is not $\sigma$-finite.
+
+\subsection*{Part b}
+
+Let $(\Omega_i, \F_i)$ be measurable spaces for $i = 1, 2$ and let $T: \Omega_1 \rightarrow \Omega_2$ be $\langle \F_1, \F_2 \rangle$-measurable. Show that any measure $\mu$ on $(\Omega_1, \F_1)$ is $\sigma$-finite if $\mu T^{-1}$ is $\sigma$-finite on $(\Omega_2, \F_2)$.
+
+By assumption of $\sigma$-finiteness of $(\Omega_2, \F_2)$, there is a countable collection of sets $\{A_n\}_{n \geq 1} \subset \F_2$ such that $\bigcup_{n \geq 1} A_n = \Omega_2$ and $\mu T^{-1}(A_n) < \infty$ for all $n$. By the first assumption,
+\[
+\Omega_1 = T^{-1}(\Omega_2) = T^{-1}\left( \bigcup_{n \geq 1} A_n \right) = \bigcup_{n \geq 1} T^{-1}(A_n)
+\]
+
+By the second assumption, $\mu(T^{-1}(A_n)) < \infty$ for all $n$. Thus the sets $\{T^{-1}(A_n)\}_{n \geq 1}$ show that $\mu$ is $\sigma$-finite.
+
 \end{document}
