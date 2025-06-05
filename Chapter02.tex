@@ -141,6 +141,65 @@ Using the hint, I will note that the largest eigenvalue is equal to
 
 The numerator and denominator are the sums of products of random variables in $(\Omega, \F, \prob)$ and the denominator is restricted from zero, so the internal function is $\langle \F, \B(\R) \rangle$-measurable, and the supremum of a measurable function is measurable.
 
+\section*{Problem 2.8}
+
+Let $f: \R \rightarrow \R$. Let $\overline{f}(x) = \inf_{\delta > 0} \sup_{|y-x|<\delta} f(y)$ and $\underline{f}(x) = \sup_{\delta > 0} \inf_{|y-x|<\delta} f(y), x \in \R$.
+
+\subsection*{Part a}
+
+Show that for any $t \in \R$,
+
+\[
+\{ x: \overline{f}(x)<t \}
+\]
+
+is open and hence $\overline{f}$ is $\langle \B(\R), \B(\R) \rangle$-measurable.
+
+Denote the set above as $A$. By the definition of $\overline{f}$ and the properties of infimum, for each $x \in A$, there exists $\delta_0$ such that
+
+\[
+\sup_{|y-x|<\delta_0} f(y) < t
+\]
+
+Thus for all $x'$ such that $|y-x'| < \delta_0$, there exists an open ball centered at $x'$ such that $B(x', r) \subset B(x, \delta_0)$, and thus
+\[
+\sup_{y \in B(x', r)} f(y) \leq \sup_{y \in B(x, \delta_0)} f(y) < t
+\]
+
+implies
+
+\[
+\inf_{r \rightarrow 0} \sup_{y \in B(x', r)} f(y) < t
+\]
+
+and thus $x' \in A$, which implies that $B(x, \delta_0) \subset A$. Thus $A$ is open. A similar argument holds in reverse for $\underline{f}$ using $\{ x: \underline{f}(x)>t \}$
+
+\subsection*{Part b}
+
+Show that for any $t > 0$,
+
+\[
+\{ x: \overline{f}(x) - \underline{f}(x) < t \} = \bigcup_{r \in \Q}\{ x: \overline{f}(x)<t+r, \underline{f}(x) > r \}
+\]
+
+and hence is open.
+
+Denote the set on the left $A$. $A$ can be built up as a union of smaller sets. For $r \in \R$, consider $A_r = \{ x: \overline{f}(x)<r+t, \underline{f}(x) = r \}$. It's clear that this captures all $x$ in the inclusion condition of $A$ for a given value of $\underline{f}(x) = r$. By taking the union over all $r \in \R$, we get the inclusion condition of $A$ for all possible $x \in \R$ and thus the union equals $A$. Thus
+
+\[
+A = \bigcup_{r \in \R} \{ x: \overline{f}(x)<r+t, \underline{f}(x) = r \}
+\] 
+
+Since we're taking the union over all $r \in \R$ and our inclusion criteria is a strictly less than sign, we can replace the $\underline{f}(x) = r$ conditions with $\underline{f}(x) > r$, such that $r \in \Q$ instead of $\R$.
+
+To see this, let $A'_{r} = \{ x: \overline{f}(x)<r+t, \underline{f}(x) > r \}$. If $x \in A_r$, then $\overline{f}(x) < r+t, \underline{f}(x) = r$. Since rationals are dense in the reals and the inequality is strict, there exists $r' \in \Q$ such that $\overline{f}(x)<r'+t, \underline{f}(x) > r'$, and thus $x \in A'_{r'}$. Thus
+
+\[
+A = \bigcup_{r \in \Q} \{ x: \overline{f}(x)<r+t, \underline{f}(x) > r \}
+\]
+
+But by Part a, each of the subsets is the finite intersection of two open sets and is thus open, and the countable union of open sets is open. Thus $A$ is open, as desired.
+
 \section*{Problem 2.15}
 
 Consider the probability space $\bigl((0, 1), \B((0, 1)), m \bigl)$, where $m$ is the Lebesgue measure.
@@ -256,5 +315,22 @@ By assumption of $\sigma$-finiteness of $(\Omega_2, \F_2)$, there is a countable
 \]
 
 By the second assumption, $\mu(T^{-1}(A_n)) < \infty$ for all $n$. Thus the sets $\{T^{-1}(A_n)\}_{n \geq 1}$ show that $\mu$ is $\sigma$-finite.
+
+\section*{Problem 2.20}
+
+Use Corollary 2.3.5 to show that for any collection $\{a_{ij}: i,j \in \N\}$ of nonnegative numbers,
+
+\[
+\sum_{i=1}^\infty \left( \sum_{j=1}^\infty a_{ij} \right) = \sum_{j=1}^\infty \left( \sum_{i=1}^\infty a_{ij} \right)
+\]
+
+Let $(\N, P(\N))$ with the counting measure be a measure space, and let $h_n: \N \rightarrow \R$ be the function/sequence $h_i(j) = a_{ij}$ for all $i, j \in \R$. Then
+
+\begin{gather*}
+\sum_{i=1}^\infty \int h_i(j) d\mu = \sum_{i=1}^\infty \left( \sum_{j=1}^\infty a_{ij} \right) \\
+\int \sum_{i=1}^\infty h_i(j) d\mu = \int \left( \sum_{i=1}^\infty a_{ij} \right) d\mu = \sum_{j=1}^\infty \left( \sum_{i=1}^\infty a_{ij} \right)
+\end{gather*}
+
+and by Corollary 2.3.5, since $h_i(j)$ is nonnegative and measurable, the two expressions equal each other.
 
 \end{document}
