@@ -200,6 +200,37 @@ A = \bigcup_{r \in \Q} \{ x: \overline{f}(x)<r+t, \underline{f}(x) > r \}
 
 But by Part a, each of the subsets is the finite intersection of two open sets and is thus open, and the countable union of open sets is open. Thus $A$ is open, as desired.
 
+\subsection*{Part c}
+
+Show that $f$ is continuous at $x_0 \in \R$ iff $\overline{f}(x_0) = \underline{f}(x_0)$.
+
+For the forward, for arbitrary $\epsilon > 0$, there exists $\delta > 0$ such that $f(B(x_0, \delta)) \subset B(f(x_0), \epsilon)$. Thus
+
+\[
+\sup_{|y-x_0|<\delta} f(y) - \inf_{|y-x_0|<\delta} f(y) < \epsilon
+\]
+
+which implies $\overline{f}(x_0) - \underline{f}(x_0) = 0$. For the reverse, we have that for all $\delta > 0$, $\sup_{|y-x_0|<\delta} f(y) \geq f(x_0)$ and $\sup_{|y-x_0|<\delta} f(y) \leq f(x_0)$, combined with $\overline{f}(x_0) = \underline{f}(x_0)$, imply that $\overline{f}(x_0) = \underline{f}(x_0) = f(x_0)$. Thus for all $\epsilon > 0$, there exist $\delta_1, \delta_2 > 0$ such that
+
+\begin{gather*}
+\sup_{|y-x_0|<\delta_1} f(y) - f(x_0) < \frac{\epsilon}{2} \\
+f(x_0) - \inf_{|y-x_0|<\delta_2} f(y) < \frac{\epsilon}{2}
+\end{gather*}
+
+Thus for all $y: |y-x_0| < \min(\delta_1, \delta_2)$,
+
+\[
+f(y) - f(x_0) < \epsilon
+\]
+
+as desired.
+
+\subsection*{Part d}
+
+Show that the set $C_f = \{x: f(\cdot)\text{ is continuous at } x\}$ is a $G_\delta$ set, i.e. the intersection of a countable number of open sets, and hence $C_f$ is a Borel set.
+
+Letting $A_n$ be the set in Part b with $t = \frac{1}{n}$, $\bigcup_{n=1}^\infty A_n = \{x: x: \overline{f}(x) - \underline{f}(x) = 0 \}$, which by Part c is the set of $x$ such that $f(x)$ is continuous. By Part b, this is the countable union of open sets.
+
 \section*{Problem 2.15}
 
 Consider the probability space $\bigl((0, 1), \B((0, 1)), m \bigl)$, where $m$ is the Lebesgue measure.
