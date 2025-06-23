@@ -333,4 +333,51 @@ Let $(\N, P(\N))$ with the counting measure be a measure space, and let $h_n: \N
 
 and by Corollary 2.3.5, since $h_i(j)$ is nonnegative and measurable, the two expressions equal each other.
 
+\section*{Problem 2.26}
+
+Establish Theorem 2.5.1. Suppose that $\mu(\Omega) < \infty$. Then $f_n \rightarrow f$ a.e. $(\mu)$ implies that $f_n \rightarrow^m f$.
+
+I will use the hint. Let
+
+\begin{gather*}
+D = \{ \omega: f_j(\omega) \nrightarrow f(\omega) \} \\
+A_{jr} = \{\omega: |f_j(\omega)-f(\omega)| > 1/r \} \\
+B_{nr} = \bigcup_{j \geq n} A_{jr} \\
+C_r = \bigcap_{n \geq 1} B_{nr}
+\end{gather*}
+
+I claim that $D = \bigcup_{r \geq 1} C_r$. $A_{jr}$ is the set of $\omega$ such that for a given $j$ and $r$, $f_j(\omega)-f(\omega)| > 1/r$. $B_{nr}$ is the set of $\omega$ such that for a given $n$ and $r$, for all $j \geq n$, $f_j(\omega) - f(\omega) > 1/r$. $C_{r}$ is the set such that for all $n \geq 1$, $f_j(\omega) - f(\omega) > 1/r$. It's clear from the definition that the union of these sets is the set of all $\omega$ such that $f_n(\omega)$ does not converge to $f(\omega)$, which is the definition of $D$.
+
+Since $f_n$ converges to $f$ a.e. $(\mu)$, $\mu(D) = 0$. Thus $\mu(D) = \mu(\bigcup_{r \geq 1} C_r)$ implies that for all $r$,
+
+\[
+\mu(C_r) = 0
+\]
+
+Since $B_{nr}$ monotonically decrease to $C_{r}$, m.c.f.a. implies that
+
+\[
+0 = \mu(C_r) = \mu(\bigcap_{n \geq 1}B_{nr}) = \lim_{n \rightarrow \infty} \mu(B_{nr})
+\]
+
+Since this holds for all $r$, the definition of $B_{nr}$ implies that $B_{nr}$ is the set of $\omega$ such that for a given $r$, $|f_j(\omega) - f(\omega)| > 1/r$ for some $j \geq n$. Since we know that this set's measure goes to zero as $n \rightarrow \infty$, looking at the definition of convergence in measure, we have that $f_n \rightarrow^m f$.
+
+\section*{Problem 2.27}
+
+Let $\phi: \R_+ \rightarrow \R_+$ be nondecreasing and let $\frac{\phi(x)}{x} \uparrow \infty$ as $x \uparrow \infty$. Let $\{ f_\lambda: \lambda \in \Lambda \}$ be a subset of $L^1(\Omega, \F, \mu)$. Show that if $\sup_{\lambda \in \Lambda} \int \phi(|f_\lambda|)d\mu < \infty$, then $\{ f_\lambda: \lambda \in \Lambda \}$ is uniformly integrable.
+
+Consider $\sup_{\lambda \in \Lambda} \int_{|f_\lambda|>t} \phi(|f_\lambda|)d\mu$. For arbitrary $M>0$ large, let $t$ be large enough such that for all $|f_\lambda| > t$, $\frac{\phi(|f_\lambda|)}{|f_\lambda|} \geq M$. Then
+
+\[
+\sup_{\lambda \in \Lambda} \int_{|f_\lambda|>t} \phi(|f_\lambda|)d\mu \geq \sup_{\lambda \in \Lambda} \int_{|f_\lambda|>t}M|f_\lambda| d\mu
+\]
+
+which implies
+
+\[
+0 \leq \sup_{\lambda \in \Lambda} \int_{|f_\lambda|>t}|f_\lambda| d\mu \leq \frac{1}{M}\sup_{\lambda \in \Lambda} \int_{|f_\lambda|>t} \phi(|f_\lambda|)d\mu
+\]
+
+We know that $\sup_{\lambda \in \Lambda} \int \phi(|f_\lambda|)d\mu$ is finite, so $\sup_{\lambda \in \Lambda} \int_{|f_\lambda|>t} \phi(|f_\lambda|)d\mu$ is finite, so as $M \rightarrow \infty$, $t \rightarrow \infty$ and the right side goes to zero, implying that the middle goes to zero. This is the definition of uniform integrability.
+
 \end{document}
