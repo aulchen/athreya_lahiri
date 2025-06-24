@@ -411,4 +411,22 @@ which implies
 
 We know that $\sup_{\lambda \in \Lambda} \int \phi(|f_\lambda|)d\mu$ is finite, so $\sup_{\lambda \in \Lambda} \int_{|f_\lambda|>t} \phi(|f_\lambda|)d\mu$ is finite, so as $M \rightarrow \infty$, $t \rightarrow \infty$ and the right side goes to zero, implying that the middle goes to zero. This is the definition of uniform integrability.
 
+\section*{Problem 2.28}
+
+Let $\mu$ be the Lebesgue measure on $([-1,1], \B([-1,1]))$. For $n \geq 1$, define $f_n(x) = nI_{(0,n^{-1})}(x) - nI_{(-n^{-1},0)}(x)$ and $f(x) = 0$ for $x \in [-1, 1]$. Show that $f_n \rightarrow f$ a.e. $(\mu)$ and $\int f_n d\mu \rightarrow \int fd\mu$ but $\{f_n\}_{n \geq 1}$ is not uniformly integrable.
+
+It's clear that $f_n$ converges pointwise to $f$ and $\int f_nd\mu = 0 = \int fd\mu$ for all $n \geq 1$, so the first two conditions hold. However, $\int_{|f_n|>t} |f_n|d\mu$ always equals $2$ for some $n$, and since $|f_n|$ has arbitrarily large magnitude, we have that
+
+\[
+\sup_{n \in \N} \int_{|f_n|>t} |f_n|d\mu = 2
+\]
+
+which does not go to zero as $t \rightarrow \infty$. Thus $\{f_n\}_{n \geq 1}$ are not uniformly integrable.
+
+\section*{Problem 2.30}
+
+For $n \geq 1$, let $f_n(x) = n^{-1/2}I_{(0,n)}(x), x \in \R$, and let $f(x) = 0, x \in \R$. Let $m$ denote the Lebesgue measure on $(\R, \B(\R))$. Show that $f_n \rightarrow f$ a.e. $(m)$ and $\{f_n\}_{n \geq 1}$ is uniformly integrable, but $\int f_n dm \nrightarrow \int f dm$.
+
+$f_n$ converges pointwise to $f$, and thus converges to $f$ a.e.. Similarly, for $t = 1$, $I_{|f_n| > 1}(x)$ is always zero, so the supremum condition is fulfilled and $\{f_n\}_{n \geq 1}$ is uniformly integrable. However, $\int f_n dm \rightarrow \infty$, which does not equal $\int f dm = 0$.
+
 \end{document}
