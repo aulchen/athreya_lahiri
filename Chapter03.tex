@@ -1,0 +1,76 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{optidef}
+\usepackage{dsfont}
+
+\newenvironment{proof}{\paragraph{Proof:}}{\hfill$\square$}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+
+\newcommand{\F}{\mathcal{F}}
+\newcommand{\M}{\mathcal{M}}
+\newcommand{\B}{\mathcal{B}}
+	
+\newcommand{\indep}{\perp \!\!\! \perp}
+
+\newcommand{\prob}{\boldsymbol{P}}
+
+\author{Arthur Chen}
+\title{Athreya Lahiri Chapter 3 Solutions}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section*{Problem 3.3}
+
+Prove the following.
+
+\subsection*{Part a}
+
+Let $a_1 \dots a_k$ be real and $p_1 \dots p_k$ be positive numbers such that $\sum_{i=1}^kp_i = 1$. Then
+
+\[
+\sum_{i=1}^kp_i\exp(a_i) \geq exp\left( \sum_{i=1}^kp_ia_i \right)
+\]
+
+Let $P$ be the probability measure on $\R$ that assigns probability $p_i$ to point $a_i$ and apply Jensen's inequality with $\phi(x) = e^x$.
+
+\subsection*{Part b}
+
+Let $b_1 \dots b_k$ be nonnegative numbers and $p_1 \dots p_k$ be as in Part a. Then
+
+\[
+\sum_{i=1}^k p_ib_i \geq \prod_{i=1}^k b_i^{p_i}
+\]
+
+Furthermore, equality holds iff $b_1 = b_2 = \dots = b_k$.
+
+Let $a_i = \log b_i$ and apply Part a. For the iff, since the exponential function is strictly convex, inequality holds iff $f(\omega)$ is a constant, which in this context means that all the $b_i$s are equal.
+
+\subsection*{Part c}
+
+For any $a, b \in \R$ and $1 \leq p < \infty$,
+
+\[
+|a+b|^p \leq 2^{p-1}(|a|^p + |b|^p)
+\]
+
+Let $f(x) = x$, $\phi(x) = |x|^p$, which is convex on the range of $p$, and let $P$ be the probability measure with 1/2 probability on $\{a, b\}$. Thus by Jensen's inequality,
+
+\[
+\phi\left( \int xdP \right) = \frac{1}{2^p}|a+b|^p \leq \int |x|^pdP = \frac{1}{2}(|a|^p + |b|^p)
+\]
+
+which implies the desired result.
+
+\end{document}
