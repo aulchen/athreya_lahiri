@@ -441,6 +441,24 @@ where by assumption $\int|f_n-f|d\mu \rightarrow 0$, so $\lim_{n \rightarrow \in
 
 For the reverse, we use the extended dominated convergence theorem. By Problem 2.37, the results hold even if the two sequences $f_n$ and $g_n$ converge in measure, not a.e. ($\mu$). Let $g_n = |f_n|$. $f_n \rightarrow^m f$ holds by assumption, and $|f_n| \rightarrow^m |f|$ holds because $||f_n| - |f|| \leq |f_n - f|$ pointwise, so for any $\epsilon > 0$ $\mu(\{||f_n| - |f|| > \epsilon\}) \leq \mu(\{|f_n - f| > \epsilon\})$. Thus $\mu(\{|f_n - f| > \epsilon\}) \rightarrow 0$ implies that $\mu(\{||f_n| - |f|| > \epsilon\}) \rightarrow 0$. We similarly have by assumption that $g_n, g \in L^1(\Omega, \F, \mu)$ and $\int |g_n|d\mu \rightarrow \int|g|d\mu$. Thus by the extended dominated convergence theorem, $\int|f_n-f|d\mu \rightarrow 0$, as desired.
 
+\subsection*{Part b}
+
+Show that if $\mu(\Omega) < \infty$ then the above two conditions are equivalent to $f_n \rightarrow^m f$ and $\{f_n\}$ is uniformly integrable.
+
+For the forward, we want to show that $\nu_{|f_n|}$ is uniformly absolutely continuous. We know that $\sup_n \int|f_n|d\mu < \infty$ because $\int |f_n|d\mu \rightarrow \int|f|d\mu < \infty$. Specifically, for all $\epsilon > 0$, eventually for all $n > n_0$ $\int |f_n|d\mu < \int|f|d\mu + \epsilon < \infty$, and the supremum of the finite $n \leq n_0$ must be finite because each $f_n$ is integrable. Thus if we can show that $\nu_{|f_n|}$ is absolutely continuous, Theorem 2.5.9 implies that $\{f_n\}$ is uniformly integrable.
+
+Fix $\epsilon > 0$. Because each $f_n$ is integrable, each $\nu_{|f_n|}$ is absolutely continuous, so there exist $\{\delta_n\}$ such that for all $n$, $\mu(A) < \delta_n \Rightarrow \int_A|f_n|d\mu < \frac{\epsilon}{3}$. For each $f_n$, we have
+
+\[
+\int_A|f_n|d\mu \leq \int_A|f_n-f|d\mu + \int_A|f|d\mu
+\]
+
+We know that because $f$ is integrable, there exists $\delta_f>0$ such that $\int_A|f|d\mu < \frac{\epsilon}{3}$. Similarly, because $\int_A|f_n-f|d\mu \leq \int|f_n-f|d\mu \rightarrow 0$, we know that there exists $n_0 \in \N$ such that $n > n_0$ implies that $\int|f_n-f|d\mu < \frac{\epsilon}{3}$.
+
+Thus letting $\delta = \min(\delta_1, \dots \delta_{n_0}, \delta_f)$, if $\mu(A) < \delta$, then $\int_A|f_n|d\mu < \epsilon$ for all $n$, as desired.
+
+For the reverse, the proof of Theorem 2.5.10 applies, since the only use of $f_n \rightarrow f$ a.e. ($\mu$) was in applying the DCT, which still applies when convergence a.e. is replaced with convergence in measure.
+
 \section*{Problem 2.30}
 
 For $n \geq 1$, let $f_n(x) = n^{-1/2}I_{(0,n)}(x), x \in \R$, and let $f(x) = 0, x \in \R$. Let $m$ denote the Lebesgue measure on $(\R, \B(\R))$. Show that $f_n \rightarrow f$ a.e. $(m)$ and $\{f_n\}_{n \geq 1}$ is uniformly integrable, but $\int f_n dm \nrightarrow \int f dm$.
