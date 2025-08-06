@@ -465,4 +465,52 @@ For $n \geq 1$, let $f_n(x) = n^{-1/2}I_{(0,n)}(x), x \in \R$, and let $f(x) = 0
 
 $f_n$ converges pointwise to $f$, and thus converges to $f$ a.e.. Similarly, for $t = 1$, $I_{|f_n| > 1}(x)$ is always zero, so the supremum condition is fulfilled and $\{f_n\}_{n \geq 1}$ is uniformly integrable. However, $\int f_n dm \rightarrow \infty$, which does not equal $\int f dm = 0$.
 
+\section*{Problem 2.31}
+
+To compute the Lebesgue integral with the Lebesgue measure, if $f$ is continuous a.e. and bounded on finite intervals, one can compute the Riemann integral of $f$ over finite intervals and pass to the limit. Justify the following.
+
+\subsection*{Part a}
+
+Let $f$ be continuous a.e. and bounded on finite intervals and $f \in L^1(\R, M_m, m)$. Show that for $\inf < a < b < \inf$, $f \in L^1([a, b], M_m, m)$ and 
+
+\[
+\int_{[a,b]} f\,dm = \oint_{[a,b]} f\,dm
+\]
+
+where the right side is the Riemann integral. This follows immediately from Theorem 2.4.1 in the book.
+
+\subsection*{Part b}
+
+If, in addition, $f \in L^1(\R, M_m, m)$, then
+
+\[
+\int_{\R} f\,dm = \lim_{\substack{a \rightarrow -\infty \\ b \rightarrow +\infty}} \oint_{[a,b]} f\,dm
+\]
+
+Let $\{a_n\}_{n \geq 1}, \{b_n\}_{n \geq 1}$ be arbitrary sequences such that $a_n \rightarrow -\infty$ and $b_n \rightarrow +\infty$. Let $f_n = f(x)I\{x \in (a_n, b_n)\}$. Then $|f_n| \leq |f|$ $a.e.$ $(m)$, $\int |f| \,dm < \infty$, and $f_n \rightarrow f$ a.e. $(m)$, so by the DCT
+
+\[
+\lim_{n \rightarrow \infty} \oint f_n\,dm = \lim_{n \rightarrow \infty} \int f_n\,dm = \int _\R f\,dm
+\]
+
+Since this holds for all sequences $\{a_n\}_{n \geq 1}, \{b_n\}_{n \geq 1}$ such that $a_n \rightarrow -\infty$ and $b_n \rightarrow +\infty$, this holds for $\lim_{\substack{a \rightarrow -\infty \\ b \rightarrow +\infty}} \oint_{[a,b]} f\,dm$.
+
+\subsection*{Part c}
+
+If $f$ is continuous a.e. and $\in L^1(\R, M_m, m)$, then
+
+\[
+\int_{\R} f\,dm = \lim_{\substack{a \rightarrow -\infty \\ b \rightarrow +\infty \\ c \rightarrow \infty}} \oint_{[a,b]} \phi_c(f)\,dm
+\]
+
+where $\phi_c(f) = f(x)I(|f(x)|\leq c) + cI(f(x) > c) - cI(f(x)<-c)$.
+
+This once again follows from the DCT. Let $\{c_n\}_{n \geq 1}, c_n \rightarrow \infty$ be arbitrary, and consider $\phi_{c_n}(f)$. By Part b, $\phi_{c_n}$ is Riemann and Lebesgue integrable on $\R$, and the Riemann and Lebesgue integrals equal each other. $|\phi_{c_n}(f)| \leq |f|$ a.e. $(m)$, $\int |f|\,dm < \infty$, and $\phi_{c_n}(f) \rightarrow f$ a.e. $(m)$, so by the DCT
+
+\[
+\lim_{n \rightarrow \infty} \oint \phi_{c_n}(f)\,dm = \lim_{n \rightarrow \infty} \int \phi_{c_n}(f)\,dm = \int_\R f\,dm
+\]
+
+where again, since this holds for all sequences, it holds for the desired limit.
+
 \end{document}
