@@ -31,6 +31,33 @@
 
 \maketitle
 
+\section*{Problem 3.1}
+
+Let $\phi:(a, b) \rightarrow \R$ be convex. Show the following.
+
+We will constantly use the following convexity formula: if $\phi$ is convex and $a < x_1 < x_2 < x_3 < b$, then 
+\[
+\frac{\phi(x_2)-\phi(x_1)}{x_2 - x_1} \leq \frac{\phi(x_3)-\phi(x_1)}{x_3 - x_1} \leq \frac{\phi(x_3)-\phi(x_2)}{x_3 - x_2}
+\]
+
+\subsection*{Part a}
+
+For each $x \in (a, b)$,
+
+\[
+\phi'_+(x) = \lim_{y \downarrow x} \frac{\phi(y) - \phi(x)}{y-x}, \phi'_-(x) = \lim_{y \uparrow x} \frac{\phi(y) - \phi(x)}{y-x}
+\]
+
+exist and are finite.
+
+Consider $\phi'_+$ first. Let $z < x$ be arbitrary and let $\{y_n\}_{n = 1} \geq x$ such that $y_n \rightarrow x$. Wlog, let $y_n$ be decreasing. Then by convexity,
+
+\[
+\frac{\phi(y_1) - \phi(x)}{y_1-x} \geq \frac{\phi(y_2) - \phi(x)}{y_2-x} \geq \dots
+\]
+
+which is bounded below by $\frac{\phi(x) - \phi(z)}{x-z}$. Thus $\frac{\phi(y_n) - \phi(x)}{y_n-x}$ is a monotonically decreasing sequence bounded below, thus it has a limit. Since this sequence was arbitrary, the limit and thus $\phi'_+$ exists. The same applies in reverse for $\phi'+$.
+
 \section*{Problem 3.3}
 
 Prove the following.
@@ -40,7 +67,7 @@ Prove the following.
 Let $a_1 \dots a_k$ be real and $p_1 \dots p_k$ be positive numbers such that $\sum_{i=1}^kp_i = 1$. Then
 
 \[
-\sum_{i=1}^kp_i\exp(a_i) \geq exp\left( \sum_{i=1}^kp_ia_i \right)
+\sum_{i=1}^kp_i\exp(a_i) \geq \exp\left( \sum_{i=1}^kp_ia_i \right)
 \]
 
 Let $P$ be the probability measure on $\R$ that assigns probability $p_i$ to point $a_i$ and apply Jensen's inequality with $\phi(x) = e^x$.
