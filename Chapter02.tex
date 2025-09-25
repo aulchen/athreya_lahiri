@@ -4,6 +4,7 @@
 \usepackage{amssymb}
 \usepackage{optidef}
 \usepackage{dsfont}
+\usepackage{mathtools}
 
 \newenvironment{proof}{\paragraph{Proof:}}{\hfill$\square$}
 \newtheorem{theorem}{Theorem}
@@ -512,5 +513,53 @@ This once again follows from the DCT. Let $\{c_n\}_{n \geq 1}, c_n \rightarrow \
 \]
 
 where again, since this holds for all sequences, it holds for the desired limit.
+
+\section*{Problem 2.33}
+
+Let $(\Omega, \F, \mu)$ be a measure space. Let $f: \Omega \times (a, b) \rightarrow \R$ be such that for each $a < t < b, f(\cdot, t) \in L^1(\Omega, \F, \mu)$.
+
+\subsection*{Part a}
+
+Suppose that for each $a < t < b$,
+\begin{enumerate}
+\item $\lim_{h \rightarrow 0} f(\omega, t+h) = f(\omega, t)$ a.e. $(\mu)$
+\item $\sup_{|h| \leq 1} |f(\omega, t+h)| \leq g_1(\omega, t)$, where $g_1(\cdot, t) \in L^1(\Omega, \F, \mu)$.
+\end{enumerate}
+
+Show that $\phi(t) \coloneq \int_\Omega f(\omega, t)d\mu$ is continuous on $(a, b)$.
+
+Let
+\[f_h(\omega, t) \coloneq \begin{cases}
+f(\omega, t+1) & h \in (0, 1] \\
+f(\omega, t + 1/h) & h > 1
+\end{cases}
+\]
+
+By 1, $f_h \rightarrow f$ a.e. $(\mu)$, and by 2, $|f_h|$ is dominated by an integrable function. Thus by the continuous DCT,
+
+\[
+\lim_{x \rightarrow t^+}\phi(x) = \lim_{h\rightarrow \infty}\int_\Omega f_h(\omega, t)d\mu = \int_\Omega f(\omega, t)d\mu = \phi(t)
+\]
+
+and a similar result holds for the left limit, proving continuity.
+
+\subsection*{Part b}
+
+Suppose that for each $a < t < b$,
+\begin{enumerate}
+\item $\lim_{h \rightarrow 0} \frac{f(\omega, t+h) - f(\omega, t)}{h} = g_2(\omega, t)$ exists a.e. $(\mu)$.
+\item $\sup_{0 \leq |h| \leq 1} \bigg| \frac{f(\omega, t+h) - f(\omega, t)}{h} \bigg| \leq G(\omega, t)$ a.e. $(\mu)$
+\item $G(\omega, t) \in L^1(\Omega, \F, \mu)$
+\end{enumerate}
+
+Show that $\phi(t) \coloneq \int_\Omega f(\omega, t)d\mu$ is differentiable on $(a, b)$.
+
+By the definition of derivative,
+
+\[
+\phi'(t) = \lim_{h \rightarrow 0} \frac{\phi(t+h) - \phi(t)}{h} = \lim_{h\rightarrow 0} \int_\Omega \frac{f(\omega, t+h) - f(\omega, t)}{h}d\mu = \int_\Omega g_2(\omega, t)d\mu
+\]
+
+where the last equality holds for similar reasons as to Part a.
 
 \end{document}
