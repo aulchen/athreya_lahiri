@@ -100,4 +100,24 @@ Let $f(x) = x$, $\phi(x) = |x|^p$, which is convex on the range of $p$, and let 
 
 which implies the desired result.
 
+\section*{Problem 3.12}
+
+\subsection*{Part b}
+
+Prove that for $p \in (0, 1)$, $\int |f+g|^pd\mu \leq \int|f|^pd\mu + \int|g|^pd\mu$.
+
+Building off of equation 2.2, we have that
+
+\[
+\biggl( \frac{|x|}{|x|+|y|} \biggr)^p + \biggl( \frac{|y|}{|x|+|y|} \biggr)^p \geq \frac{|x|}{|x|+|y|} + \frac{|y|}{|x|+|y|} = 1
+\]
+
+implies
+
+\[
+|x+y|^p \leq (|x|+|y|)^p \leq |x|^p + |y|^p
+\]
+
+and integrating pointwise gives the result.
+
 \end{document}
