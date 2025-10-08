@@ -120,4 +120,19 @@ implies
 
 and integrating pointwise gives the result.
 
+\section*{Problem 3.14}
+
+Show that $(L^\infty(\mu), d_\infty)$ is a complete metric space.
+
+Using the hint, let $\{f_n\}_{n \geq 1}$ be a Cauchy sequence in $L^\infty(\mu)$. For each $k \geq 1$, let $f_{n_k}$ be a subsequence such that $||f_{n_{k+1}} - f_{n_k}||_\infty < 2^{-k}$. By the definition of $L^\infty$, for all $f \in L^\infty$, the set $\{\omega: |f(\omega)| > ||f||_\infty\}$ has measure zero.
+
+Let
+\[
+A = \bigcap_{k=1}^\infty\{ \omega: |f_{n_{k+1}}(\omega) - f_{n_k}(\omega)| \leq ||f_{n_{k+1}} - f_{n_k}||_\infty \}
+\]
+
+$A^C$ has measure zero because it is the countable union of zero sets.
+
+Thus, for $\omega \in A$ and for all $k \geq 1$, $|f_{n_{k+1}}(\omega) - f_{n_k}(\omega)| \leq ||f_{n_{k+1}} - f_{n_k}||_\infty < 2^{-k}$. Thus for $\omega \in A$, $\{f_{n_k}(\omega)\}_{k \geq 1}$ is a Cauchy sequence in $\R$, which converges to a point we denote $f(\omega)$. For $\omega \in A^C$, let $f(\omega) = 0$. Then $\lim_{k \rightarrow \infty} f_{n_k} = f$ a.e. $(\mu)$, and the rest of the proof follows as in the proof of Theorem 3.2.2, which proves completeness for $L^p$, $p \in (0, \infty)$.
+
 \end{document}
