@@ -1,0 +1,71 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{optidef}
+\usepackage{dsfont}
+
+\newenvironment{proof}{\paragraph{Proof:}}{\hfill$\square$}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+
+\newcommand{\F}{\mathcal{F}}
+\newcommand{\M}{\mathcal{M}}
+\newcommand{\B}{\mathcal{B}}
+	
+\newcommand{\indep}{\perp \!\!\! \perp}
+
+\newcommand{\prob}{\boldsymbol{P}}
+
+\author{Arthur Chen}
+\title{Athreya Lahiri Chapter 4 Solutions}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section*{Problem 4.4}
+
+Let $\nu, \mu, \mu_1, \mu_2 \hdots$ be $\sigma$-finite measures on a measurable space $(\Omega, \F)$. Prove the following.
+
+\subsection*{Part a}
+
+If $\mu_1 \ll \mu_2$ and $\mu_2 \ll \mu_3$, then $\mu_1 \ll \mu_3$ and
+
+\[
+\frac{d\mu_1}{d\mu_3} = \frac{d\mu_1}{d\mu_2}\frac{d\mu_2}{d\mu_3} \text{ a.e. } (\mu_3)
+\]
+
+$\mu_1 \ll \mu_3$ is trivial; the zero sets of $\mu_3$ are zero sets of $\mu_2$ are zero sets of $\mu_1$. Using the Radon-Nikodym derivatives,
+
+\[
+\mu_1(A) = \int_A \frac{d\mu_1}{d\mu_2} d\mu_2
+\]
+
+where $\frac{d\mu_1}{d\mu_2}$ is non-negative and measurable. Thus the integral can be approximated by a series of non-decreasing simple functions,
+
+\begin{align*}
+\int_A \frac{d\mu_1}{d\mu_2} d\mu_2 &= \lim_{n\rightarrow \infty} \int_A \biggl( \frac{d\mu_1}{d\mu_2} \biggr)^{(n)}d\mu_2 \\
+&= \lim_{n\rightarrow \infty} \sum_{i=1}^{k_n} \biggl( \frac{d\mu_1}{d\mu_2}\biggr)^{(n)}_i \mu_2(A_{i_n})
+\end{align*}
+
+Replacing $\mu_2$ with its Radon-Nikodym derivative,
+
+\begin{align*}
+\lim_{n\rightarrow \infty} \sum_{i=1}^{k_n} \biggl( \frac{d\mu_1}{d\mu_2}\biggr)^{(n)}_i \mu_2(A_{i_n}) &= 
+\lim_{n\rightarrow \infty} \sum_{i=1}^{k_n} \biggl( \frac{d\mu_1}{d\mu_2}\biggr)^{(n)}_i \int_{A_{i_n}} \frac{d\mu_2}{d\mu_3} d\mu_3 \\
+&= \lim_{n\rightarrow \infty} \sum_{i=1}^{k_n} \int_{A_{i_n}} \biggl( \frac{d\mu_1}{d\mu_2}\biggr)^{(n)}_i \frac{d\mu_2}{d\mu_3} d\mu_3 \\
+&= \lim_{n\rightarrow \infty} \int_A \biggl( \frac{d\mu_1}{d\mu_2}\biggr)^{(n)} \frac{d\mu_2}{d\mu_3} d\mu_3 \\
+&= \int_A \frac{d\mu_1}{d\mu_2} \frac{d\mu_2}{d\mu_3} d\mu_3
+\end{align*}
+
+where the second line follows because $\biggl( \frac{d\mu_1}{d\mu_2}\biggr)^{(n)}$ is constant on $A_{i_n}$, the third line because adding up the integrals on the partition of $A$ gives an integral on the whole of $A$, and the fourth line by the MCT. Since the Radon-Nikodym derivative of $\mu_3$ is unique a.e. $(\mu_3)$, this implies that $\frac{d\mu_1}{d\mu_2} \frac{d\mu_2}{d\mu_3} = \frac{d\mu_1}{d\mu_3}$ a.e. $(\mu_3)$, as desired.
+
+\end{document}
