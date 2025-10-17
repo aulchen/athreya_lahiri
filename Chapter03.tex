@@ -135,4 +135,29 @@ $A^C$ has measure zero because it is the countable union of zero sets.
 
 Thus, for $\omega \in A$ and for all $k \geq 1$, $|f_{n_{k+1}}(\omega) - f_{n_k}(\omega)| \leq ||f_{n_{k+1}} - f_{n_k}||_\infty < 2^{-k}$. Thus for $\omega \in A$, $\{f_{n_k}(\omega)\}_{k \geq 1}$ is a Cauchy sequence in $\R$, which converges to a point we denote $f(\omega)$. For $\omega \in A^C$, let $f(\omega) = 0$. Then $\lim_{k \rightarrow \infty} f_{n_k} = f$ a.e. $(\mu)$, and the rest of the proof follows as in the proof of Theorem 3.2.2, which proves completeness for $L^p$, $p \in (0, \infty)$.
 
+\section*{Problem 3.18}
+
+Let $X$ be a nonnegative random variable.
+
+\subsection*{Part a}
+
+Show that $EX \log X \geq (EX)(E\log X)$.
+
+Log is concave, so by Jensen's inequality, $\log (EX) \geq E \log X$. Consider $\phi(x) = x \log x$. Its second derivative is $1/x$, which is positive over the range of $x$, so $x \log x$ is convex. Thus by Jensen's inequality, $E X \log (EX) \leq E (X \log X)$. Putting it all together,
+
+\[
+E(X \log X) \geq EX \log(EX) \geq (EX)(E\log X)
+\]
+
+as desired.
+
+\subsection*{Part b}
+
+Show that 
+\[
+\sqrt{1 + (EX)^2} \leq E(\sqrt{1+X^2}) \leq 1+EX
+\]
+
+For the first inequality, consider $\phi(x) = \sqrt{1+x^2}$. Its second derivative is $(1+x^2)^{-3/2}$, which is positive, so $\phi(x)$ is convex and the first inequality follows by Jensen's inequality. The second inequality follows by the triangle inequality on $L^{1/2}$ with the functions $f=1, g=x^2$, which was proven directly in Problem 3.12.
+
 \end{document}
