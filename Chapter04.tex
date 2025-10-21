@@ -56,7 +56,7 @@ where $\frac{d\mu_1}{d\mu_2}$ is non-negative and measurable. Thus the integral 
 &= \lim_{n\rightarrow \infty} \sum_{i=1}^{k_n} \biggl( \frac{d\mu_1}{d\mu_2}\biggr)^{(n)}_i \mu_2(A_{i_n})
 \end{align*}
 
-Replacing $\mu_2$ with its Radon-Nikodym derivative,
+where for all $n$, $\biggl( \frac{d\mu_1}{d\mu_2}\biggr)^{(n)}_i$ is constant on $A_{i_n}$. Replacing $\mu_2$ with its Radon-Nikodym derivative,
 
 \begin{align*}
 \lim_{n\rightarrow \infty} \sum_{i=1}^{k_n} \biggl( \frac{d\mu_1}{d\mu_2}\biggr)^{(n)}_i \mu_2(A_{i_n}) &= 
@@ -67,5 +67,72 @@ Replacing $\mu_2$ with its Radon-Nikodym derivative,
 \end{align*}
 
 where the second line follows because $\biggl( \frac{d\mu_1}{d\mu_2}\biggr)^{(n)}$ is constant on $A_{i_n}$, the third line because adding up the integrals on the partition of $A$ gives an integral on the whole of $A$, and the fourth line by the MCT. Since the Radon-Nikodym derivative of $\mu_3$ is unique a.e. $(\mu_3)$, this implies that $\frac{d\mu_1}{d\mu_2} \frac{d\mu_2}{d\mu_3} = \frac{d\mu_1}{d\mu_3}$ a.e. $(\mu_3)$, as desired.
+
+\subsection*{Part b}
+
+Suppose that $\mu_1$ and $\mu_2$ are dominated by $\mu_3$. Then for any $\alpha, \beta \geq 0$, $\alpha\mu_1 + \beta\mu_2$ is dominated by $\mu_3$ and
+
+\[
+\frac{d(\alpha\mu_1 + \beta\mu_2)}{\mu_3} = \alpha\frac{d\mu_1}{d\mu_3} + \beta\frac{d\mu_2}{d\mu_3} \text{ a.e. } (\mu_3)
+\]
+
+Domination is trivial. We also have
+
+\begin{align*}
+(\alpha\mu_1 + \beta\mu_2)(A) &= \alpha\mu_1(A) + \beta\mu_2(A) \\
+&= \alpha\int_A \frac{d\mu_1}{d\mu_3}d\mu_3 + \beta\int_A \frac{d\mu_2}{d\mu_3}d\mu_3 \\
+&= \int_A \alpha\frac{d\mu_1}{d\mu_3} + \beta\frac{d\mu_2}{d\mu_3} d\mu_3
+\end{align*}
+
+and the result follows from the uniqueness of the Radon-Nikodym derivative a.e. $(\mu_3)$.
+
+\subsection*{Part c}
+
+If $\mu \ll \nu$ and $\frac{d\mu}{d\nu} > 0$ a.e. $(\nu)$, then $\nu \ll \mu$ and
+
+\[
+\frac{d\nu}{d\mu} = \biggl( \frac{d\mu}{d\nu} \biggr)^{-1} \text{ a.e. } (\mu)
+\]
+
+Suppose that $\mu(A) = 0$. Then by the derivative, $0 = \int_A \frac{d\mu}{d\nu}d\nu$. Since $\frac{d\mu}{d\nu}$ is strictly positive, the integral can only be zero if $\nu(A) = 0$. This shows that $\nu \ll \mu$. Using a similar argument to Part a,
+
+\begin{align*}
+\nu(A) &= \int_A \frac{d\nu}{d\mu} d\mu \\
+&= \lim_{n\rightarrow \infty}\sum_{i=1}^{n_i} \biggl( \frac{d\nu}{d\mu} \biggr)^{(n)}_i \mu(A_{i_n}) \\
+&= \lim_{n\rightarrow \infty}\sum_{i=1}^{n_i} \biggl( \frac{d\nu}{d\mu} \biggr)^{(n)}_i \int_{A_{i_n}} \frac{d\mu}{d\nu} d\nu \\
+&= \lim_{n\rightarrow \infty}\sum_{i=1}^{n_i} \int_{A_{i_n}} \biggl( \frac{d\nu}{d\mu} \biggr)^{(n)}_i \frac{d\mu}{d\nu} d\nu \\
+&= \lim_{n\rightarrow \infty} \int_{A} \biggl( \frac{d\nu}{d\mu} \biggr)^{(n)} \frac{d\mu}{d\nu} d\nu \\
+&= \int_{A} \frac{d\nu}{d\mu} \frac{d\mu}{d\nu} d\nu \\
+\end{align*}
+
+Since this is true for all $A$, this implies that $\frac{d\nu}{d\mu} = 1$ a.e. $(\nu)$, which is equivalent to $\frac{d\nu}{d\mu} = \biggl( \frac{d\mu}{d\nu} \biggr)^{-1}$ a.e. $(\mu)$, since the zero sets of $\mu$ are zero sets of $\nu$ and vice versa.
+
+\subsection*{Part d}
+
+Let $\{\mu_n\}_{n \geq 1}$ be a sequence of measures and let $\{\alpha_n\}_{n \geq 1}$ be a sequence of positive real numbers. Define $\mu = \sum_{n=1}^\infty \alpha_n \mu_n$.
+
+\subsubsection*{Subpart i}
+
+Show that $\mu \ll \nu$ iff $\mu_n \ll \nu$ for each $n \geq 1$, and in this case
+
+\[
+\frac{d\mu}{d\nu} = \sum_{n=1}^\infty \alpha_n \frac{d\mu_n}{d\nu} \text{ a.e. } (\nu)
+\]
+
+For the forward, if $A$ is a zero set of $\nu$ and therefore $\mu$, then $\mu(0) = \sum_{n=1}^\infty \alpha_n\mu_n(A)$ iff $\mu_n(A)=0$ for all $n \geq 1$. The reverse is trivial.
+
+For the derivative, let $\mu_{(k)}(A)$ be the partial sum $\sum_{n=1}^k \alpha_n\mu_n(A)$. Then 
+
+\[
+\int_A \frac{d\mu_{(k)}}{d\nu} d\nu = \int_A\sum_{i=1}^k\alpha_n \frac{d\mu_n}{d\nu} d\nu
+\]
+
+and the claim follows by the MCT.
+
+\subsubsection*{Subpart ii}
+
+Show that $\mu \perp \nu$ iff $\mu_n \perp \nu$ for all $n \geq 1$.
+
+The forward is the same as the proof in Subpart i. For the reverse, let $A_k$ be sets such that $\mu_k(A_k) = 0, \nu(A_k^C) = 0$. Consider $A = \bigcap_{k=1}^\infty A_k$. For each $\mu_n$, $A$ is the subset of a zero set $A^n$, so $\mu_n(A) = 0$ for all $n \geq 1$ implies that $\mu(A) = 0$. Conversely, $A^C = \bigcup_{k=1}^\infty A_k^C$ is the countable union of zero sets in $\nu$ and so $\nu(A^C) = 0$.
 
 \end{document}
